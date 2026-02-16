@@ -13,7 +13,7 @@ sudo dnf install -y odin-lang ols
 This installs the Odin programming language (compiler + standard library), ols (Odin Language Server), and odinfmt (Odin formatter).
 
 ## Limitations
-Fedora does not currently support the Odin programming language toolchain.
+Fedora does not currently support the Odin programming language.
 As a result, the binaries packaged for ols/odinfmt are sourced from upstream GitHub release artifacts rather than being built from source within Fedora
 infrastructure.
 
