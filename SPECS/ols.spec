@@ -1,6 +1,6 @@
 Name:           ols
 Version:        2026.02
-Release:        2%{?dist}
+Release:        4%{?dist}
 Summary:        Odin programming language language server protocol and formatter
 
 License:        MIT
@@ -26,14 +26,27 @@ This is an unofficial COPR package of ols and is maintained independently.
 
 %prep
 %autosetup -n ols-%{ols_tag}
-sed -i 's/git rev-parse --short HEAD/git rev-parse --short HEAD 2>\/dev\/null || echo nogit/' build.sh
 
 %build
-./build.sh
-./odinfmt.sh
+odin build src/ \
+  -show-timings \
+  -collection:src=src \
+  -out:ols \
+  -no-bounds-check \
+  -o:speed \
+  -define:VERSION="dev-2026-02-92b8c76"
 
+odin build tools/odinfmt/main.odin \
+  -file \
+  -show-timings \
+  -collection:src=src \
+  -out:odinfmt \
+  -o:speed
+
+  
 %check
 ./odinfmt -h
+./ols version
 
 %install
 install -d -m 0755 %{buildroot}%{_bindir}
@@ -47,6 +60,5 @@ install -m 0755 odinfmt %{buildroot}%{_bindir}/odinfmt
 %{_bindir}/odinfmt
 
 %changelog
-* Fri Feb 20 2026 Fedora COPR <sisyphus1813@protonmail.com> - 2026.02-1
-- Now builds by bootstrapping odin
-- Builtin symbols do not fully resolve yet but a patch has been issued and will be released with the next build.
+* Fri Feb 20 2026 Fedora COPR <sisyphus1813@protonmail.com> - 2026.02-4
+- Fixed problem with using upstream provided flags during install. Now compiles using proper flags for COPR builds.
