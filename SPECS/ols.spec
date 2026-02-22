@@ -1,15 +1,15 @@
 Name:           ols
 Version:        2026.02
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Odin programming language language server protocol and formatter
 
 License:        MIT
 URL:            https://github.com/DanielGavin/ols
 
 %global debug_package %{nil}
-%global ols_tag dev-2026-02
+%global ols_tag e64cb328237427d1abbaa677afb498bee7271dbb
 
-Source0:   https://github.com/DanielGavin/ols/archive/refs/tags/%{ols_tag}.tar.gz#/ols-%{ols_tag}.tar.gz
+Source0:   https://github.com/DanielGavin/ols/archive/%{ols_tag}.tar.gz#/ols-%{ols_tag}.tar.gz
 
 ExclusiveArch:  x86_64 aarch64
 
@@ -34,7 +34,7 @@ odin build src/ \
   -out:ols \
   -no-bounds-check \
   -o:speed \
-  -define:VERSION="dev-2026-02-92b8c76"
+  -define:VERSION="dev-2026-02-22-ed829a9"
 
 odin build tools/odinfmt/main.odin \
   -file \
@@ -60,5 +60,5 @@ install -m 0755 odinfmt %{buildroot}%{_bindir}/odinfmt
 %{_bindir}/odinfmt
 
 %changelog
-* Fri Feb 20 2026 Fedora COPR <sisyphus1813@protonmail.com> - 2026.02-4
-- Fixed problem with using upstream provided flags during install. Now compiles using proper flags for COPR builds.
+* Sun Feb 22 2026 Fedora COPR <sisyphus1813@protonmail.com> - 2026.02-5
+- Update to ols version 2026.02:e64cb328237427d1abbaa677afb498bee7271dbb

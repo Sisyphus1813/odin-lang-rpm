@@ -1,6 +1,6 @@
 Name:           odin-lang
 Version:        2026.02
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Odin programming language compiler and standard library
 
 License:        zlib
@@ -8,9 +8,9 @@ URL:            https://odin-lang.org/
 
 %global __provides_exclude_from ^%{_prefix}/lib/odin/vendor/.*$
 %global __requires_exclude_from ^%{_prefix}/lib/odin/vendor/.*$
-%global odin_tag dev-2026-02
+%global odin_tag 5d94c01e47fcdb7d0938a9125d17a08bde4f041b
 
-Source0:        https://github.com/odin-lang/Odin/archive/refs/tags/%{odin_tag}.tar.gz
+Source0:        https://github.com/odin-lang/Odin/archive/%{odin_tag}.tar.gz#/Odin-%{odin_tag}.tar.gz
 Source1:        odin.sh
 
 ExclusiveArch:  x86_64 aarch64
@@ -57,5 +57,5 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/profile.d/odin.sh
 %config(noreplace) %{_sysconfdir}/profile.d/odin.sh
 
 %changelog
-* Sat Feb 14 2026 Fedora COPR <sisyphus1813@protonmail.com> - 2026.02-1
-- Initial COPR build of Odin from dev-2026-02
+* Sun Feb 22 2026 Fedora COPR <sisyphus1813@protonmail.com> - 2026.02-2
+- Update to Odin Version 2026.02:5d94c01e47fcdb7d0938a9125d17a08bde4f041b
