@@ -1,6 +1,6 @@
 Name:           ols
 Version:        2026.02
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Odin programming language language server protocol and formatter
 
 License:        MIT
@@ -52,16 +52,16 @@ odin build tools/odinfmt/main.odin \
 install -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 ols %{buildroot}%{_bindir}/ols
 install -m 0755 odinfmt %{buildroot}%{_bindir}/odinfmt
-install -d -m 0755 %{buildroot}%{_prefix}/lib/ols
-cp -r builtin %{buildroot}%{_prefix}/lib/ols/builtin
+install -d -m 0755 %{buildroot}%{_prefix}/share/ols
+cp -r builtin %{buildroot}%{_prefix}/share/ols/builtin
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/ols
 %{_bindir}/odinfmt
-%{_prefix}/lib/ols
+%{_prefix}/share/ols
 
 %changelog
-* Sun Feb 22 2026 Fedora COPR <sisyphus1813@protonmail.com> - 2026.02-6
-- Update description & install builtin libs.
+* Sun Feb 22 2026 Fedora COPR <sisyphus1813@protonmail.com> - 2026.02-7
+- Fix typo.
