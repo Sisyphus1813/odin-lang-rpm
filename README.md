@@ -18,9 +18,6 @@ Internal Compiler Error: Cannot find the library collection 'base'. Is the ODIN_
 The process was killed by SIGILL: Illegal instruction
 ```
 
-## Limitations
-ols Builtin symbols may not fully resolve at this time due to prior upstream packaging constraints. A fix for this has already been merged (see ols commit fd541bfb2789f32e4adc6b0d3c0577687a512208) and will be included in the next upstream release.
-
 ### Non-standard shells
 This project relies on exporting ODIN_ROOT through /etc/profile.d/odin.sh to avoid touching the user's shell configuration. This works fine for standard shells such as BASH or zsh.  
 If you are using a shell that does not source /etc/profile.d on login by default (such as yash), you will need to manually ensure such directory is sourced at login. Alternatively, you can also export ODIN_ROOT in your shell configuration file. To do so, add:
